@@ -1,0 +1,79 @@
+:host {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 3em;
+    background-color: #FFFFFF;
+    flex: 1;
+
+    main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 85%;
+        gap: 3.5em;
+    
+    }
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+    }
+
+    .header-content{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }
+
+    .courses-popular{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2em;
+    }
+
+    .courses{
+        display: flex;
+        justify-content: center;
+        gap: 1em;
+    }
+
+    .courses-list{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 20%;
+        height: 250px;
+        gap: 1em;
+        cursor: pointer;
+        border: 2px solid #212121;
+        border-radius:0px 20px 0px 20px;
+        padding: 1em;
+        background-color: #212121;
+
+
+        img {
+            box-shadow: 5px 10px 10px rgb(12, 12, 12);
+  
+            background-color: white;
+        }
+
+        p {
+
+            text-wrap: wrap;
+            width: 100%;
+            overflow: hidden; /* "overflow" value must be different from "visible" */
+            text-overflow: ellipsis;
+        }
+
+        h3, p{
+            color: whitesmoke;
+        }
+    }
+
+    @media (max-width: 1423px) {
+
+    }
+}

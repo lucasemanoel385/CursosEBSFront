@@ -1,0 +1,17 @@
+:host{
+    display: flex;
+
+    width: 100%;
+    background:  rgb(15, 15, 15);
+    footer{
+        align-items: center;
+        height: 7em;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    p {
+        color: grey
+    }
+}

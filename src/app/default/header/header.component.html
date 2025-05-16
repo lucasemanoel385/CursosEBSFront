@@ -1,0 +1,53 @@
+<header>
+    <div class="logo-input">
+        <a routerLink="">CursosEBS</a>
+        <div class="search-header">
+            <input #search type="search">
+            <button [tabIndex]="0" class="btn-submit" type="button" (click)="searchHeader(search)">Pesquisar</button>
+        </div>
+    </div>
+    <nav class="nav-header">
+        <ul class="nav-ul">
+            <li>
+                <a href="">Home</a>
+                <hr class="line-bottom">
+            </li>
+            <li>
+                <a routerLink="/courses/list">Cursos</a>
+                <hr class="line-bottom">
+            </li>
+            <li>
+                <a href="">Sobre nós</a>
+                <hr class="line-bottom">
+            </li>
+            <li>
+                <a href="">Contato</a>
+                <hr class="line-bottom">
+            </li>
+        </ul>
+        @if(!login()) {
+            <div class="button-logging">
+                <span><a routerLink="login">Entrar</a>
+                    <hr class="line-bottom-entry">
+                </span>
+                <span><a routerLink="/register">Cadastrar</a>
+                    <hr class="line-bottom">
+                </span>
+          
+            </div>
+        } @else {
+            <div class="layout-logging" >
+                <div class="logging" (click)="menuDisplay(menu, image)">
+                    <h4>{{loginName()}}</h4>
+                    <img #image width="20px" height="20px" src="../../../assets/arrow.svg" alt="">
+                </div>
+                <ul #menu class="logging-menu">
+                    @if (instructorOrAdmin()) {
+                        <li><a routerLink="/management">Gestão cursos</a></li>
+                    }
+                    <li><a (click)="logout()" routerLink="/login">Logout</a></li>
+                </ul>
+            </div>
+        }
+    </nav>
+</header>

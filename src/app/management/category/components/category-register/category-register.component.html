@@ -1,0 +1,19 @@
+<main class="register-default">
+    <h2>Categorias</h2>
+    <form id="courseForm" [formGroup]="form" (ngSubmit)="form">
+        <div class="form-container">
+            <div>
+                <span>Nome categoria:</span>
+                <app-custom-input type="text" placeholder="Insira o nome da categoria" [control]="getControl('name')" [required]="true"/>
+            </div>
+        </div>
+        <div class="btns">
+            <button class="btn-back" (click)="backRouter()">
+                VOLTAR
+            </button>
+            <button type="submit" (click)="submit()" class="btn-save" [disabled]="!this.form.valid">
+                {{ buttonSubmit() }}
+            </button>
+        </div>
+    </form>
+</main>

@@ -1,0 +1,100 @@
+<main>
+    <section class="course-header">
+        <div class="course-header-container">
+            <div class="course-header-banner">
+                <div class="course-header-banner-logo">
+                    <img width="150px" src="../../../assets/icons8-programacao.svg" alt="">
+                    <div class="course-header-banner-content">
+                        <h1>Curso de {{getCourse()?.title}}</h1>
+                    </div>
+                </div>
+                <div class="course-header-summary">
+                    <!--<div class="course-header-summary_info">
+                        <img width="30px" src="../../../assets/icons8-programacao.svg" alt="">
+                        <div>
+                            <p class="course-header-summary_title">Avaliacao</p>
+                            <p>9.4</p>
+                        </div>
+                    </div>-->
+                    <div class="course-header-summary_info">
+                        <img width="30px" src="../../../assets/icons8-programacao.svg" alt="">
+                        <div>
+                            <p class="course-header-summary_title">Criado em</p>
+                            <p>{{getCourse()?.createdAt | formatDatePipe}}</p>
+                        </div>
+                    </div>
+                    <div class="course-header-summary_info">
+                        <img width="30px" src="../../../assets/icons8-programacao.svg" alt="">
+                        <div>
+                            <p class="course-header-summary_title">Alunos(as)</p>
+                            <p>{{quantityEnrolled()}}</p>
+                        </div>
+                    </div>
+                    <!--<div class="course-header-summary_info">
+                        <img width="30px" src="../../../assets/icons8-programacao.svg" alt="">
+                        <div>
+                            <p class="course-header-summary_title">Transcricao</p>
+                            <p class="course-header-summary_text">100%</p>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="course-button-start">
+        @if (profile().role != "ROLE_RENEW" && profile() != '') {
+            <button class="btn-submit" (click)="enrolledCourse()" [disabled]="enrolled()">Matricular no curso</button>
+        }
+        <app-enroll/>
+    </div>
+    <section class="course-content">
+        <div class="course-content-details">
+            <div class="course-content-description">
+                <h2>Nesse curso voce aprendera:</h2>
+                <p>{{getCourse()?.description}}</p>
+            </div>
+            <div class="course-content-lessons">
+                <h2><strong>Aulas</strong></h2>
+                <ul>
+                    <hr>
+                    @for (item of getListLessons(); track item.position; let i = $index) {
+                        <li>
+                            <div class="list_lesson">
+                                <span class="list_lesson-content">
+                                    <p>{{item.position}} - {{item.description}}</p>
+                                </span>
+                                @if (profile().role != "ROLE_RENEW" && profile() != '') {
+                                <button class="btn-submit" (click)="toggleIframe(i)" [ngStyle]="{'background': isIframeOpen[i] ? 'red' : 'rgb(0, 180, 0)'}">
+                                    <span class="material-symbols-sharp">{{ isIframeOpen[i] ? 'close' : 'play_arrow' }}</span>
+                                    {{ isIframeOpen[i] ? 'Fechar Aula' : 'Assistir Aula' }}
+                                </button>
+                                <div style="position:relative;aspect-ratio:16/9;" [ngStyle]="{'display': isIframeOpen[i] ? 'flex' : 'none'}">
+                                    <iframe 
+                                          loading="lazy" title="Gumlet video player"
+                                          [src]="sanitizeUrl(item.videoUrl)"
+                                          style="border:none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;"
+                                        allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen;">
+                                        </iframe>
+                                </div>
+                                    
+                                }
+                            </div>
+                        </li>
+                        <hr>
+                    }
+                </ul>
+            </div>
+        </div>
+        <!--<aside class="course-content-aside">
+            <h2>Instrutores</h2>
+            <div class="course-content-aside_info">
+                <img src="../../../assets/icons8-programacao.svg" alt="">
+                <div class="course-content-aside_details">
+                    <p>Jacqueline Oliveira</p>
+                    <a href=""><img width="20px" src="../../../assets/icons8-programacao.svg" alt="">LinkedIn</a>
+                </div>
+            </div>
+            <p>Engenheira de Software, formada em Ciência da Computação e pós-graduada em Arquitetura e Engenharia de Software, atua como desenvolvedora backend Java desde 2010.</p>
+        </aside>-->
+    </section>
+</main>

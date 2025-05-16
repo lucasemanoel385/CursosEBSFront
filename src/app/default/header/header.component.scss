@@ -1,0 +1,222 @@
+:host {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: var(--color-primary);
+    //background: linear-gradient(0.25turn, #d6ff99, #afda70, #80bd26);
+    color: white;
+
+    header{
+        display: flex;
+        justify-content: space-between;
+        height: 7.5em;
+        text-align: center;
+        align-items: center;
+        width: 100%;
+        gap: 2em;
+        padding: 1em;
+        box-sizing: border-box;
+    }
+    
+    .nav-header{
+        display: flex;
+        align-items: center;
+        gap: 4em;
+        justify-content: start;
+        width: 50%;
+    }
+    
+    .nav-ul{
+        display: flex;
+        align-items: center;
+        gap: 2em;
+    }
+
+    li:hover, span:hover {
+        color: #6e6e6e;
+    }
+    
+    .button-logging{
+        display: flex;
+        gap: 2em;
+    }
+    
+    .logo-input{
+        display: flex;
+        align-items: center;
+        gap: 1em;
+        width: 50%;
+        justify-content: center;
+
+        a{
+            font-size: 30px;
+        }
+        
+
+    }
+
+    .search-header{
+        display: flex;
+        gap: 1em;
+        align-items: center;
+
+        input {
+            width: 100%;
+            border-radius: 6px;
+            padding: 7px 8px;
+            font-size: 13px;
+            box-shadow: 5px 5px 20px 0px rgb(22, 22, 22);
+        }
+    }
+
+    .btn-submit{
+        background-color: #2A7AE4;
+        padding: 0.8em;
+
+        &:hover {
+            background-color: rgb(0, 119, 255);
+        }
+    }
+
+    .layout-logging{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        width: 30%;
+        cursor: pointer;
+    }
+
+    .logging{
+        display: flex;
+        align-items: center;
+        color: var(--color-secondary);
+        
+        &:hover {
+            color: #6e6e6e;
+        }
+    }
+
+    .logging-menu{
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 84px;
+        background-color: var(--color-primary);
+        border-radius: 6px;
+        width: 150px;
+        li{
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+            border-bottom: 1px solid var(--color-secondary);
+
+            a{
+                width: 100%;
+                padding: 0.8em 0.6em;
+                word-break: break-all;
+            }
+        }
+    }
+
+    .rotateArroww {
+        animation-name: rotateArrow;
+        animation-duration: 0.5s;
+        animation-fill-mode: both;
+    }
+
+    .reverseRotate{
+        animation-name: reverseRotateArrow;
+        animation-duration: 0.5s;
+        animation-fill-mode: both;
+    }
+
+    @keyframes rotateArrow {
+
+        from {
+            rotate: 0deg;
+        } to {
+            rotate: 90deg;
+        }
+        
+    }
+
+    @keyframes reverseRotateArrow {
+                from {
+            rotate: 90deg;
+        } to {
+            rotate: 0deg;
+        }
+    }
+
+    li, span {
+        &:hover {
+            .line-bottom {
+                background-color: var(--color-secondary);
+                height: 2px;
+                animation-name: line-animation;
+                animation-iteration-count: infinite;
+                animation-duration: 1s;
+                animation-direction: alternate;
+                border: 0;
+            }
+        }
+    }
+
+    .line-bottom {
+        border: 0;
+        height: 2px;
+        background-color: var(--color-secondary);
+    }
+
+    .line-bottom-entry {
+        background-color: rgb(145, 216, 38);
+        height: 3px;
+        animation-name: line-animation-entry;
+        animation-iteration-count: infinite;
+        animation-duration: 1s;
+        animation-direction: alternate;
+        border: 0;
+    }
+    
+    @keyframes line-animation-entry {
+        to{
+            width: 100%;
+        } 
+        from {
+            width: 20%;
+        }
+        
+    }
+
+    @keyframes line-animation {
+        to{
+            width: 33%;
+        } 
+        from {
+            width: 100%;
+        }
+        
+    }
+
+    @media (max-width: 1423px) {
+
+       .logo-input{
+        flex-direction: column;
+        gap: 0.2em;
+
+       }
+
+       .nav-header {
+        justify-content: center;
+        width: auto;
+       }
+
+       .nav-ul{
+        gap: 1em;
+       }
+        
+    }
+    
+}
+

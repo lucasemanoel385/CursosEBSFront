@@ -1,0 +1,18 @@
+<main>
+    <div class="container">
+        <h2>{{ title }}</h2>
+        <section class="header-course">
+            <div class="header-course-search">
+                <label for="search">{{placeHolder}}</label>
+                <div class="header-course-search_tools">
+                    <input #search class="header-course-search_input" type="text" name="search" id="search" placeholder="{{placeHolder}}">
+                    <button class="btn-submit" (click)="emitSearch(search.value)">Pesquisar</button>
+                </div>
+                <a class="btn-submit" [routerLink]="routeLink">{{ nameCreate }}</a>
+            </div>
+        </section>
+        <section>
+            <ng-content></ng-content>
+        </section>
+    </div>
+</main>

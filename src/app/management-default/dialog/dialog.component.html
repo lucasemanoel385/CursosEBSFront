@@ -1,0 +1,17 @@
+<dialog #dialog id="modal" class="dialog">
+    <div class="dialog-layout">
+        <div class="dialog-header">
+            <h2>{{title}}</h2>
+            <button (click)="dialog.close()"><span class="material-symbols-sharp">
+                close
+                </span></button>
+        </div>
+        <hr class="line">
+        <p>{{description}}</p>
+        <hr class="line1">
+        <div class="content">
+            <ng-content>
+            </ng-content>
+        </div>
+    </div>
+</dialog>

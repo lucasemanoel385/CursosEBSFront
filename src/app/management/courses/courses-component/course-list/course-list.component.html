@@ -1,0 +1,40 @@
+<app-list-default nameCreate="Registrar curso" placeHolder="Pesquisar curso" routeLink="register" (outputSearch)="searchCourse($event)" title="Cursos">
+    <table class="table" #table>
+        <thead>
+            <tr>
+                <th class="table_td_id">Id</th>
+                <th>Titulo</th>
+                <th>price</th>
+                <th>Instrutores</th>
+                <th>Editar</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of getListCourses()?.content; track $index) {
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.price }}</td>
+                    <td>{{ item.instructorId }}</td>
+                    <td><button class="btn-edit-icon btn" [routerLink]="['register', item.id]">
+                        <span class="material-symbols-sharp">
+                            edit_square
+                        </span></button></td>
+                    <td><button class="btn-delete-icon btn" (click)="modal.open(); idCourseSelected.set(item.id)">
+                        <span class="material-symbols-sharp">
+                        delete
+                        </span></button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <app-dialog style="display: flex; gap: 2em;" #modal title="Exluir" description="Deseja realmente excluir este item?">
+        <button class="btn-delete btn" (click)="modal.close(); deleteCourse()">Sim</button>
+        <button class="btn-submit btn" (click)="modal.close()">Nao</button>
+    </app-dialog>
+    <app-paginator [pageable]="getListCourses()?.page"
+    (nextPageOutPut)="handlePageEvent($event)"
+    (previousPageOutPut)="handlePageEvent($event)"
+    />
+</app-list-default>

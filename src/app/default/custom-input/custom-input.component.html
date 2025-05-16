@@ -1,0 +1,4 @@
+<input #search [type]="type" [placeholder]="placeholder" (keyup)="emitSearch(search.value)" [formControl]="control" [autocomplete]="autocomplete" required="{{required}}">
+@if (control.touched && control.invalid) {
+    <span style="color: red;"><strong>Campo incompleto ou vazio</strong></span>
+}

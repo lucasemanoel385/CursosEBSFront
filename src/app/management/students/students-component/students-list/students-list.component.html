@@ -1,0 +1,40 @@
+<app-list-default nameCreate="Registrar aluno" placeHolder="Pesquisar aluno" routeLink="register" (outputSearch)="searchUser($event)" title="Alunos">
+    <table class="table" #table>
+        <thead>
+            <tr>
+                <th class="table_td_id">Id</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Situação</th>
+                <th>Editar</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of getListStudents()?.content; track $index) {
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.email }}</td>
+                    <td>{{ item.role.name }}</td>
+                    <td><button class="btn-edit-icon btn" [routerLink]="['register', item.id]">
+                        <span class="material-symbols-sharp">
+                        edit_square
+                        </span></button></td>
+                    <td><button class="btn-delete-icon btn" (click)="modal.open(); idUserSelected.set(item.id)"><span class="material-symbols-sharp">
+                        delete
+                        </span></button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <app-dialog style="display: flex; gap: 2em;" #modal title="Exluir" description="Deseja realmente excluir este item?">
+        <button class="btn-delete btn" (click)="modal.close(); deleteUser()">Sim</button>
+        <button class="btn-submit btn" (click)="modal.close()">Nao</button>
+    </app-dialog>
+    <app-paginator [pageable]="getListStudents()?.page"
+    (nextPageOutPut)="handlePageEvent($event)"
+    (previousPageOutPut)="handlePageEvent($event)"
+    />
+</app-list-default>
+

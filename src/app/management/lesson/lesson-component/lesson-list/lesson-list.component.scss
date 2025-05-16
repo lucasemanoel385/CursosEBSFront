@@ -1,0 +1,51 @@
+:host {
+    width: 100%;
+   
+
+    .table {
+        width: 100%;
+        border: 1px solid rgb(224, 224, 224);
+        border-collapse: collapse;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        margin: 2rem 0;
+        box-sizing: border-box;
+    
+        th {
+            padding-bottom: 10px;
+        }
+    
+        td, tr {
+            border: 1px solid rgb(224, 224, 224);
+           
+        }
+    
+        tr, table {
+    
+            border-left: 0;
+            border-right: 0;
+        }
+        
+        tr {
+            width: 95%;
+            border-top: 0;
+        }
+    
+        td{
+            word-break: keep-all;
+            text-align: center;
+            box-sizing: border-box;
+            
+            border-bottom: 0;
+            padding: 15px;
+            border-left: 0;
+            border-right: 0;
+        }
+    
+        th, td {
+            line-height: 2;
+        }
+    }
+}
+

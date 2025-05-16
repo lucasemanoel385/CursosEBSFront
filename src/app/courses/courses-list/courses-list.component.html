@@ -1,0 +1,58 @@
+<main>
+    <div class="container-courses">
+        <div class="filter-search">
+            <h3>Filtrar por:</h3>
+            <h4>Tipos de conteúdo</h4>
+
+            <div (click)="filterCategory(front.value)">
+                <input #front name="category" type="radio" value="front-end" id="front" [checked]="selectedCategory === 'front-end'"><label>Front-End</label>
+            </div>
+            <div (click)="filterCategory(devops.value)">
+                <input #devops name="category" type="radio" value="devops" id="devops" [checked]="selectedCategory === 'devops'"><label>DevOps</label>
+            </div>
+            <div (click)="filterCategory(mobile.value)">
+                <input #mobile name="category" type="radio" value="mobile" id="mobile" [checked]="selectedCategory === 'mobile'"><label>Mobile</label>
+            </div>
+            <div (click)="filterCategory(backend.value)">
+                <input #backend name="category" type="radio" value="back-end" id="backend" [checked]="selectedCategory === 'back-end'"><label>Back-End</label>
+            </div>
+            <div (click)="filterCategory(datascience.value)">
+                <input #datascience name="category" type="radio" value="data-science" id="datascience" [checked]="selectedCategory === 'data-science'"><label>Data-Science</label>
+            </div>
+            <div (click)="filterCategory(others.value)">
+                <input #others name="category" type="radio" value="others" id="others" [checked]="selectedCategory === 'others'"><label>Outros</label>
+            </div>
+        </div>
+        <div class="courses">
+            <div class="courses-search">
+                <div>
+                    <input #search type="search" [value]="searchC()">
+                    <button (click)="searchCourse(search)">Pesquisar</button>
+                </div>
+                <span>{{getListCourses()?.page?.totalElements}} Resultados encontrado</span>
+            </div>
+            @for (item of getListCourses()?.content; track $index) {
+                <div class="courses-list">
+                    <a [routerLink]="['/../courses', item.id]">
+                        <div class="courses-list-content">
+                            <div>
+                                <img width="100px" style="min-width: 100px;" src={{item.imgURL}} alt={{item.title}}>
+                            </div>
+                            <div class="courses-list-content-description">
+                                <h4>{{item.title}}</h4>
+                                <p>
+                                    Boas-vindas à Formação de Segurança com Java Aqui você aprenderá a utilizar o Spring Security para proteger suas aplicações, desde configurações mais básicas de proteção até a adição de camadas mais avançadas de segurança. De início, você aprenderá como configurar a segurança em suas aplicações Web, entendendo o gerenciamento de 
+                                </p>
+                                <!--<div class="courses-timming-conclusion">31h para conclusão</div>-->
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+    <app-paginator [pageable]="getListCourses()?.page"
+    (nextPageOutPut)="handlePageEvent($event)"
+    (previousPageOutPut)="handlePageEvent($event)"
+    />
+</main>

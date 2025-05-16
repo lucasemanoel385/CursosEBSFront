@@ -1,0 +1,54 @@
+<main class="register-default">
+    <h2>Cursos</h2>
+    <form id="courseForm" [formGroup]="form" (ngSubmit)="form">
+        <div class="form-container">
+            <div>
+                <span>Url da imagem:</span>
+                <app-custom-input type="text" placeholder="Insira o titutlo" [control]="getControl('imgURL')" [required]="true"/>
+            </div>
+            <div>
+                <span>Titulo:</span>
+                <app-custom-input type="text" placeholder="Insira o titutlo" [control]="getControl('title')" [required]="true"/>
+            </div>
+            <div>
+                <span>Preço:</span>
+                <app-custom-input type="number" placeholder="Insira o preço" [control]="getControl('price')" [required]="true"/>
+            </div>
+            <div>
+                <span>Instructor:</span>
+                <div class="container-dropdown">
+                    <app-custom-input type="text" placeholder="Insira o instrutor" (outputSearch)="searchFilter($event, dropdown, false)" [control]="getControl('instructorName')" [required]="true"/>
+                    <ul #dropdown class="dropdown-ul">
+                        @for (item of getListInstructor()?.content; track $index) {
+                            <li (click)="toggleDropdown(dropdown)" (click)="setValueInstructorForm(item)" class="dropdown-li">{{item.instructor}}</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <span>Categoria:</span>
+                <div class="container-dropdown">
+                    <app-custom-input type="text" placeholder="Selecione a categoria" (outputSearch)="searchFilter($event, dropdown1, true)" [control]="getControl('categoryName')" [required]="true"/>
+                    <ul #dropdown1 class="dropdown-ul">
+                        @for (item of getListCategory()?.content; track $index) {
+                            <li (click)="toggleDropdown(dropdown1)" (click)="setValueCategoryForm(item)" class="dropdown-li">{{item.name}}</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <textarea rows="8" cols="50" name="" id="" placeholder="Insira a descrição" formControlName="description"></textarea>
+        <div class="btns">
+            <button class="btn-back" (click)="backRouter()">
+                VOLTAR
+            </button>
+            @if (condition()) {
+                <button class="btn-save" (click)="submitCreateCourse()" [disabled]="!form.valid">
+                    {{ buttonSubmit() }}
+                </button>
+            } @else {
+                <div class="spin-loading"></div>
+            }
+        </div>
+    </form>
+</main>

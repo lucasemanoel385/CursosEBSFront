@@ -1,0 +1,35 @@
+<app-list-default nameCreate="Registrar categoria" placeHolder="Pesquisar categoria" routeLink="register" (outputSearch)="searchClient($event)" title="Categorias">
+    <table class="table" #table>
+        <thead>
+            <tr>
+                <th class="table_td_id">Id</th>
+                <th>Nome categoria</th>
+                <th>Editar</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of getListCategory()?.content; track item.id; let i = $index) {
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td><button class="btn-edit-icon btn" [routerLink]="['register', item.id]">
+                        <span class="material-symbols-sharp">
+                            edit_square
+                        </span></button></td>
+                    <td><button class="btn-delete-icon btn" (click)="modal.open(); idCategorySelected.set(item.id)"><span class="material-symbols-sharp">
+                        delete
+                        </span></button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <app-dialog style="display: flex; gap: 2em;" #modal title="Exluir" description="Deseja realmente excluir este item?">
+        <button class="btn-delete btn" (click)="modal.close(); deleteCategory()">Sim</button>
+        <button class="btn-submit btn" (click)="modal.close()">Nao</button>
+    </app-dialog>
+    <app-paginator [pageable]="getListCategory()?.page"
+    (nextPageOutPut)="handlePageEvent($event)"
+    (previousPageOutPut)="handlePageEvent($event)"
+    />
+</app-list-default>

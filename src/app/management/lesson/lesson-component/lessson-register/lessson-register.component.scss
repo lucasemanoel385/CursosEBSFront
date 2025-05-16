@@ -1,0 +1,99 @@
+:host {
+
+    width: 100%;;
+    display: flex;
+    overflow: auto;
+    background-color: #0e0e0e;
+    color: var(--color-secondary);
+    
+    h2{
+        margin-left: 3em;
+
+    }
+
+    form{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 2em;
+        
+    }
+
+    .form-container{
+        display: flex;
+        flex-flow: column;
+        gap: 2em;
+
+  
+        
+    }
+
+    textarea{
+        border: 1px solid rgb(125, 185, 35);
+        border-radius: 5px;
+        padding: 0.6em;
+        color: rgb(119, 119, 119);
+
+        &:hover{
+            background-color: #212121;
+            color: whitesmoke;
+        }
+    }
+
+    .btn-save{
+        background-color: greenyellow;
+        padding: 1em;
+        border-radius: 5px;
+        font-weight: 600;
+        color: rgb(119, 119, 119);
+        font-size: 15px;
+
+        &:hover {
+            background-color: rgb(147, 211, 50);
+        }
+    }
+
+    .btn-back {
+        background-color: rgb(224, 224, 224);
+        padding: 1em;
+        border-radius: 5px;
+        font-weight: 600;
+        color: rgb(119, 119, 119);
+        font-size: 15px;
+
+        &:hover {
+            background-color: rgb(192, 192, 192);
+        }
+    }
+
+    .btns{
+        display: flex;
+        gap: 1.5em;
+    }
+
+    .input-file {
+        border-radius: 10px;
+        padding: 0.6em;
+        width: 100%;
+        color: rgb(119, 119, 119);
+        border: 2px solid rgb(125, 185, 35);
+        box-sizing: border-box;
+
+        &:focus {
+            border: 2px solid rgb(159, 235, 46);
+        }
+
+        &:hover {
+            background-color: #212121;
+            color: whitesmoke;
+        }
+
+        &.ng-invalid.ng-touched{
+            border: 2px solid red;
+            transition: 0.5s ease-in-out;
+        }
+    }
+
+}

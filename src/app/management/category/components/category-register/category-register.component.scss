@@ -1,0 +1,77 @@
+:host {
+
+    width: 100%;;
+    display: flex;
+    overflow: auto;
+    background-color: #0e0e0e;
+    color: var(--color-secondary);
+    
+    
+    h2{
+        margin-left: 3em;
+    }
+
+    form{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 3em;
+        gap: 2em;
+    }
+
+    .form-container{
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+        width: 20%;
+    }
+
+    textarea{
+        border: 1px solid rgb(125, 185, 35);
+        border-radius: 5px;
+        padding: 0.6em;
+        color: rgb(119, 119, 119);
+
+        &:hover{
+            background-color: rgb(147, 211, 50);
+        }
+    }
+
+    .btn-save{
+        background-color: greenyellow;
+        padding: 1em;
+        border-radius: 5px;
+        font-weight: 600;
+        color: rgb(119, 119, 119);
+        font-size: 15px;
+
+        &:hover {
+            background-color: rgb(147, 211, 50);
+        }
+
+        &:disabled {
+            background-color: #6e6e6e;
+            cursor: default;
+        }
+    }
+
+    .btn-back {
+        background-color: rgb(224, 224, 224);
+        padding: 1em;
+        border-radius: 5px;
+        font-weight: 600;
+        color: rgb(119, 119, 119);
+        font-size: 15px;
+
+        &:hover {
+            background-color: rgb(192, 192, 192);
+        }
+    }
+
+    .btns{
+        display: flex;
+        gap: 1.5em;
+    }
+
+}

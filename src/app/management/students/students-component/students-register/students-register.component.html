@@ -1,0 +1,39 @@
+<main class="register-default">
+    <h2>Usuários</h2>
+    <form id="courseForm" [formGroup]="form" (ngSubmit)="form">
+        <div class="form-container">
+            <div>
+                <span>Nome do usuário:</span>
+                <app-custom-input type="text" placeholder="Insira o nome do aluno/instrutor" [control]="getControl('name')" />
+            </div>
+            <div>
+                <span>Email:</span>
+                <app-custom-input type="email" placeholder="Insira o email" [control]="getControl('email')" />
+            </div>
+            <div>
+                <span>Senha:</span>
+                <app-custom-input type="text" placeholder="Insira a senha do aluno/instrutor" [control]="getControl('password')" />
+            </div>
+            <div>
+                <span>Perfil:</span>
+                <div class="custom-select">
+                    <span class="selected">{{ selectProfile() }}</span>
+                    <ul class="ul-dropdown">
+                        @for (item of getListProfile()?.content; track $index) {
+                            <li (click)="editSelected(item)">{{item.name}}</li>
+                        }
+                    </ul>
+                </div>
+                <!--<app-custom-input type="text" placeholder="Insira o perfil do usuario" [control]="getControl('role')" />-->
+            </div>
+        </div>
+        <div class="btns">
+            <button class="btn-back" (click)="backRouter()">
+                VOLTAR
+            </button>
+            <button class="btn-save" (click)="submitUser()" [disabled]="!form.valid">
+                {{ buttonSubmit() }}
+            </button>
+        </div>
+    </form>
+</main>

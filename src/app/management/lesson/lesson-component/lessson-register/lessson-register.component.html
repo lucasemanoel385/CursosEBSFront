@@ -1,0 +1,59 @@
+<main class="register-default">
+    <h2>Aulas</h2>
+    <form id="courseForm" [formGroup]="form" (ngSubmit)="form">
+        <div class="form-container">
+            <div>
+                <span>Curso da aula:</span>
+                <div class="container-dropdown">
+                    <app-custom-input type="text" placeholder="Insira o curso da aula" (outputSearch)="searchFilter($event, dropdown)" [control]="getControl('courseName')" [required]="true"/>
+                    <ul #dropdown class="dropdown-ul">
+                        @for (item of getListCoursesFilter()?.content; track $index) {
+                            <li (click)="toggleDropdown(dropdown)" (click)="setValueInstructorForm(item)" class="dropdown-li">{{item.title}}</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <span>Titulo:</span>
+                <app-custom-input type="text" placeholder="Insira o titulo" [control]="getControl('title')" [required]="true"/>
+            </div>
+            <!--<div>
+                <span>Descrição:</span>
+                <app-custom-input type="text" placeholder="Insira a descrição" [control]="getControl('description')" />
+            </div>-->
+            <div>
+                <span>URL do video:</span>
+                <app-custom-input type="text" placeholder="Insira a URL do video" [control]="getControl('videoUrl')" />
+            </div>
+            <div>
+                <span>Duração:</span>
+                <app-custom-input type="text" placeholder="Insira a duração do video" [control]="getControl('duration')" />
+            </div>
+            <div>
+                <span>Posição da aula no curso:</span>
+                <app-custom-input type="number" placeholder="Insira a posição da aula no curso" [control]="getControl('position')" [required]="true"/>
+            </div>
+            <div>
+                <span>Salvar video:</span>
+                <input class="input-file" type="file" (change)="onFileChange($event)" accept="video/*" required><br>
+            </div>
+        </div>
+        <div style="display: flex; flex-direction: column;">
+            <span style="font-size: 18px; font-weight: 700; color: #777777;">Insira a descrição:</span>
+            <textarea rows="8" cols="50" name="" id="" placeholder="Insira a descrição" formControlName="description"></textarea>
+        </div>
+        <div class="btns">
+            <button class="btn-back" (click)="backRouter()">
+                VOLTAR
+            </button>
+            @if (condition()) {
+                <button class="btn-save" (click)="submitCreateLesson()" [disabled]="!form.valid">
+                    {{ buttonSubmit() }}
+                </button>
+            } @else {
+                <div class="spin-loading"></div>
+            }
+            
+        </div>
+    </form>
+</main>

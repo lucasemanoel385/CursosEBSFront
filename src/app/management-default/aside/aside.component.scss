@@ -1,0 +1,51 @@
+:host{
+
+
+    .aside{
+        display: flex;
+        flex-direction: column;
+        background-color: var(--color-primary);
+        width: 280px;
+        height: 100%;
+        padding: 3em;
+        box-sizing: border-box;
+        gap: 4em;
+        box-shadow: -10px -10px 15px 0px black;
+
+        h2{
+            color: rgb(119, 119, 119);
+        }
+    }
+
+    .aside-nav-list{
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    .aside-nav-list_li{
+        font-size: 18px;
+        background-color: var(--color-secondary);
+        border-radius: 7px;
+
+        a{
+            display: flex;
+            gap: 0.6em;
+            color: black;
+            transition: all 0.2s ease-in-out;
+   
+            padding: 0.8em;
+            border-radius: 5px;
+
+            p{
+                width: 100%;
+            }
+          
+            &:hover {
+                border-right: 20px solid var(--color-tertiary);
+                padding: 1em;
+            }
+
+        }
+    }
+}
