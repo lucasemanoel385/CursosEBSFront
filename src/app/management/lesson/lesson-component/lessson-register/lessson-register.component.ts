@@ -100,12 +100,13 @@ export class LesssonRegisterComponent {
 
     if(this.buttonSubmit() === "SALVAR") {
       this.condition.set(false);
-      this.#apiServiceLesson.httpUpdateLesson(this.form.value as Lesson).subscribe(res => this.condition.set(true));
-      this.condition.set(true)
+      this.#apiServiceLesson.httpUpdateLesson(this.form.value as Lesson).subscribe(
+        () => this.condition.set(true)
+      );
     } else {
       this.condition.set(false);
-      this.#apiServiceLesson.httpCreateLesson(this.form.value as Lesson, this.selectedFile as File).subscribe(res => this.condition.set(true));
-      this.condition.set(true)
+      this.#apiServiceLesson.httpCreateLesson(this.form.value as Lesson, this.selectedFile as File).subscribe(() => this.condition.set(true));
+
     }
   }
 
