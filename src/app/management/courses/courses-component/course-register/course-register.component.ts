@@ -43,7 +43,6 @@ export class CourseRegisterComponent implements OnInit {
     imgURL: [],
     title: [],
     description: [],
-    price: [],
     instructorName: [],
     instructorId: [],
     categoryName: [],
@@ -141,10 +140,10 @@ export class CourseRegisterComponent implements OnInit {
   submitCreateCourse() {
     if(this.buttonSubmit() === "SALVAR") {
       this.condition.set(false);
-      this.#apiServiceCourse.httpUpdateCourse(this.form.value as Courses).subscribe(res => this.condition.set(true));
+      this.#apiServiceCourse.httpUpdateCourse(this.form.value as Courses).subscribe(() => this.condition.set(true));
     } else {
       this.condition.set(false);
-      this.#apiServiceCourse.httpCreateCourse(this.form.value as Courses).subscribe(res => this.condition.set(true));
+      this.#apiServiceCourse.httpCreateCourse(this.form.value as Courses).subscribe(() => this.condition.set(true));
     }
   }
 

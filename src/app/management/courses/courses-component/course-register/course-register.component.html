@@ -11,10 +11,6 @@
                 <app-custom-input type="text" placeholder="Insira o titutlo" [control]="getControl('title')" [required]="true"/>
             </div>
             <div>
-                <span>Preço:</span>
-                <app-custom-input type="number" placeholder="Insira o preço" [control]="getControl('price')" [required]="true"/>
-            </div>
-            <div>
                 <span>Instructor:</span>
                 <div class="container-dropdown">
                     <app-custom-input type="text" placeholder="Insira o instrutor" (outputSearch)="searchFilter($event, dropdown, false)" [control]="getControl('instructorName')" [required]="true"/>
