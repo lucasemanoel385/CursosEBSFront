@@ -13,7 +13,7 @@
         <div class="courses">
             @for (item of (getListCourses()?.content || []).slice(0, 5); track $index) {
                 <a [routerLink]="['courses/', item.id]" class="courses-list">
-                    <img width="50px" height="50px" src="{{item.imgURL}}" alt="">
+                    <img width="70px" height="50px" src="{{item.imgURL}}" alt="">
                     <h3>{{item.title}}</h3>
                     <p>{{item.description}}</p>
                 </a>
